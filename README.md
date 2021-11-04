@@ -2,4 +2,9 @@
 Rotation project 2021
 
 
-Making edits to the readme file to test git clone version control
+Uploaded all scripts
+
+Consider creating independent script to sour minor mode just like we did for Bhairavi.
+
+
+
