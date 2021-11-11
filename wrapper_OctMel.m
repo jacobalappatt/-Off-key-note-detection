@@ -7,7 +7,7 @@ type={1,-1};
 
 mode =  double([0, .7, .5, 0, .7, .4, 0, .4, .4, 0, .8, .5, 0, .7, .5, 0, .7, .4, 0, .4, .4, 0, .8, .5, 0, .7, .5, 0, .7, .4, 0, .4, .4, 0, .8, .5]);
  
-for i = 1:length(type) % Loop over 1 and -1 for sour and not-sour respectively
+for i = 1:length(type) % Loop for sour and not-sour respectively
     sour = type{i};
     
     for sample = 1:20 % We want 20 of each type condition, per mode
@@ -32,7 +32,7 @@ for i = 1:length(type) % Loop over 1 and -1 for sour and not-sour respectively
         
        % Writing files
         fs=44100; % sampling in Hz
-        filename=['C:\Users\Jacob_ASUS2018\Desktop\SHBT\McDermott\audiofiles\octatonic\octatonic_',type_name,'_scaledegree',scale_degree_soured_num,'_sample',sample_num,'.wav']
+        filename=['/Users/jacob/Desktop/audiofiles/octatonic/octatonic_',type_name,'_scaledegree',scale_degree_soured_num,'_sample',sample_num,'.wav']
         audiowrite(filename,full_melody,fs);
         
     end

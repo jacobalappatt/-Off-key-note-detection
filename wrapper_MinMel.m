@@ -6,7 +6,7 @@ type={1,-1};
 % Original data from Van Essen - see make_newmel_sour_Jacob_FromMalinda.m
 mode = double([0.149, 0.179, 0, 0.144, 0, 0.201, 0.038, 0, 0.053,	0, 0.192, 0, 0.149, 0.179, 0, 0.144, 0, 0.201, 0.038, 0, 0.053,	0, 0.192, 0, 0.149, 0.179, 0, 0.144, 0, 0.201, 0.038, 0, 0.053,	0, 0.192, 0]);
 
-for i = 1:length(type) % Loop over 1 and -1 for sour and not-sour respectively
+for i = 1:length(type) % Loop for sour and not-sour respectively
     sour = type{i};
     
     for sample = 1:20 % We want 20 of each type condition, per mode
@@ -31,7 +31,7 @@ for i = 1:length(type) % Loop over 1 and -1 for sour and not-sour respectively
         
        % Writing files
         fs=44100; % sampling in Hz
-        filename=['C:\Users\Jacob_ASUS2018\Desktop\SHBT\McDermott\audiofiles\minor\minor_',type_name,'_scaledegree',scale_degree_soured_num,'_sample',sample_num,'.wav']
+        filename=['/Users/jacob/Desktop/audiofiles/minor/minor_',type_name,'_scaledegree',scale_degree_soured_num,'_sample',sample_num,'.wav']
         audiowrite(filename,full_melody,fs);
         
     end
