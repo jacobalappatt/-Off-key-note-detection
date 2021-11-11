@@ -4,10 +4,11 @@
 n = 16;  % #notes
 type={1,-1};
 % Key Profile - 0 probability on off scale notes
-% See Bhairavi_NoteProfiles to find how this note profile was made
-%mode = double([0, 0.05, 0, 0.09, 0, 0.14, 0.05, 0, 0.05, 0, 0.26, 0.21, 0, 0.05, 0, 0.09, 0, 0.14, 0.05, 0, 0.05, 0, 0.26, 0.21, 0, 0.05, 0, 0.09, 0, 0.14, 0.05, 0, 0.05, 0, 0.26, 0.21]);
-mode = double([0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.115, 0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.115, 0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.115])
+% Originall created the note profile from pieces
+% Tweaked it to reduce the tonic, increase minor 2nd and perf 4th. 
 
+%mode = double([0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.115, 0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.115, 0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.115]);
+mode = double([0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.17, 0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.17, 0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.17]);
 
 
 for i = 1:length(type) % Loop over 1 and -1 for sour and not-sour respectively
@@ -35,7 +36,7 @@ for i = 1:length(type) % Loop over 1 and -1 for sour and not-sour respectively
         
        % Writing files
         fs=44100; % sampling in Hz
-        filename=['C:\Users\Jacob_ASUS2018\Desktop\SHBT\McDermott\audiofiles\bhairavi\bhairavi_',type_name,'_scaledegree',scale_degree_soured_num,'_sample',sample_num,'.wav']
+        filename=['/Users/jacob/Desktop/audiofiles/bhairavi_komalre/bhairavi_',type_name,'_scaledegree',scale_degree_soured_num,'_sample',sample_num,'.wav']
         audiowrite(filename,full_melody,fs);
         
     end

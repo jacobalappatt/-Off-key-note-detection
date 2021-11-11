@@ -21,7 +21,8 @@ function [ melody ] = make_newmel_sour_Bhairavi(n, sour, scale_degree_soured, mo
 % Key Profile changed so 0 probability on off scale notes
 %major_key_profile =  double([0.184,  0.000,  0.155,  0.000,  0.191,  0.109,  0.000,  0.214,  0.000,  0.078,  0.00,  0.055,0.184,  0.000,  0.155,  0.000,  0.191,  0.109,  0.000,  0.214,  0.000,  0.078,  0.00,  0.055,0.184,  0.000,  0.155,  0.000,  0.191,  0.109,  0.000,  0.214,  0.000,  0.078,  0.00,  0.055]);
 %minor_key_profile =  double([0.192,  0.000,  0.149,  0.179,  0.000,  0.144,  0.000,  0.201,  0.038,  0.012,  0.053,  0.022, 0.192,  0.000,  0.149,  0.179,  0.000,  0.144,  0.000,  0.201,  0.038,  0.012,  0.053,  0.022, 0.192,  0.000,  0.149,  0.179,  0.000,  0.144,  0.000,  0.201,  0.038,  0.012,  0.053,  0.022]);
-%bhairavi_key_profile = double([0.26, 0.21, 0, 0.05, 0, 0.09, 0, 0.14, 0.05, 0, 0.05, 0, 0.26, 0.21, 0, 0.05, 0, 0.09, 0, 0.14, 0.05, 0, 0.05, 0, 0.26, 0.21, 0, 0.05, 0, 0.09, 0, 0.14, 0.05, 0, 0.05, 0]);
+%bhairavi_key_profile = double([0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.17, 0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.17, 0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.17]);
+
 
 %  VERY IMPORTANT - FROM MALINDA 11/01/21
 %Modes should be passed such that the distribution begins on the second
@@ -84,6 +85,9 @@ while final == 1
         melody1(i) = note;
     end
     
+    
+    
+    
     %%
     %Make selected note sour - scale degree 1 (melody1(1)), scale degree 3
     %(melody1(1)+4), and scale degree 5 (melody1(1)+7;
@@ -145,6 +149,14 @@ while final == 1
         end
     elseif sour ~=1||-1 &&scale_degree_soured~=1||3||5 
         error('Unrecognized sour note or scale degree parameter');
+    end
+    
+    %% Check for presence of minor second 
+    % Added because without minor second, this is just Aeolian
+    if sum(ismember(melody1,69)) == 0 % Because 68 has not yet been removed (see line 161)
+        melody1
+        disp("Minor second is absent - regenerating melody");
+        final = 1;
     end
 end
 
