@@ -22,17 +22,23 @@ for i = 1:length(type) % Loop for sour and not-sour respectively
         end
         
         % Generating melody and sometimes souring it
-        melody =  make_newmel_sour_Jacob(n, sour, scale_degree_soured, mode)
+        melody =  make_newmel_sour_Jacob(n, sour, scale_degree_soured, mode);
         
-        % Setting F0 to the melody
-        full_melody = GenerateTones_v1(melody, 264);
+       % Setting F0 to the melody
+        frequencies =[220.00, 233.08, 246.94, 261.63, 277.18, 293.66, 311.13, 329.63];
+        Fzero_num=frequencies(randi([1 8]));
+        full_melody = GenerateTones_v1(melody, Fzero_num);
+        
+        scale_degree_soured_num=num2str(scale_degree_soured);
+        sample_num=num2str(sample);
+        Fzero=num2str(Fzero_num);
         
         scale_degree_soured_num=num2str(scale_degree_soured);
         sample_num=num2str(sample);
         
        % Writing files
         fs=44100; % sampling in Hz
-        filename=['/Users/jacob/Desktop/audiofiles/octatonic/octatonic_',type_name,'_scaledegree',scale_degree_soured_num,'_sample',sample_num,'.wav']
+        filename=['octatonic_',type_name,'_scaledegree',scale_degree_soured_num,'_sample',sample_num,'_freq_',Fzero,'.wav']
         audiowrite(filename,full_melody,fs);
         
     end

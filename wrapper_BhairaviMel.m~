@@ -26,8 +26,17 @@ for i = 1:length(type) % Loop for sour and not-sour respectively
         end
         
         % Generating melody and sometimes souring it
-        melody =  make_newmel_sour_Bhairavi(n, sour, scale_degree_soured, mode);
-           
+        final = 1;
+        while final == 1
+           melody =  make_newmel_sour_Bhairavi(n, sour, scale_degree_soured, mode);
+           for i = 1:length(MEL)
+               if MEL(i,:) ~= melody
+                   final = 0;
+               end
+           end
+        end
+        
+            
             
         % Setting F0 to the melody
         frequencies =[220.00, 233.08, 246.94, 261.63, 277.18, 293.66, 311.13, 329.63];
@@ -39,7 +48,7 @@ for i = 1:length(type) % Loop for sour and not-sour respectively
         Fzero=num2str(Fzero_num);
        % Writing files
         fs=44100; % sampling in Hz
-        filename=['bhairavi_',type_name,'_scaledegree',scale_degree_soured_num,'_sample',sample_num,'_freq_',Fzero,'.wav']
+        filename=['/Users/jacob/Desktop/audiofiles/bhairavi/bhairavi_',type_name,'_scaledegree',scale_degree_soured_num,'_sample',sample_num,'_freq',sample_num,'.wav']
         audiowrite(filename,full_melody,fs);
         
     end
