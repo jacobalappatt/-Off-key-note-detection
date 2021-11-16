@@ -16,8 +16,10 @@ mode = double([0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.17, 0, 
 for sample = 81:120 % We want 20 of each type condition, per mode
         if rem(sample,2) == 0 % Even samples are sour 
             type_name='sour';
+            sour=1;
         else
             type_name='not_sour';
+            sour=-1;
         end 
         
         degrees = {1,5};
@@ -44,6 +46,9 @@ for sample = 81:120 % We want 20 of each type condition, per mode
         stim_name=['trial_',sample_num,'.wav']; % Actual stimulus file name
         FILES=[FILES, convertCharsToStrings(filename)]; % For lookup table
        
+        % RMS normalization to 0.05
+        ampMax = 0.05;
+        output = audioNormalization_YW(full_melody,ampMax);
         audiowrite(stim_name,full_melody,fs);
         
 end
