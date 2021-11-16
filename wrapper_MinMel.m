@@ -4,21 +4,21 @@ n = 16;  % #notes
 type={1,-1};
 % Key Profile changed so 0 probability on off scale notes
 % Original data from Van Essen - see make_newmel_sour_Jacob_FromMalinda.m
+FILES=[];
 mode = double([0.149, 0.179, 0, 0.144, 0, 0.201, 0.038, 0, 0.053,	0, 0.192, 0, 0.149, 0.179, 0, 0.144, 0, 0.201, 0.038, 0, 0.053,	0, 0.192, 0, 0.149, 0.179, 0, 0.144, 0, 0.201, 0.038, 0, 0.053,	0, 0.192, 0]);
 
-for i = 1:length(type) % Loop for sour and not-sour respectively
-    sour = type{i};
-    
-    for sample = 1:20 % We want 20 of each type condition, per mode
 
+    
+for sample = 41:80 % We want 20 of each type condition, per mode
+        if rem(sample,2) == 0 % Even samples are sour 
+            type_name='sour';
+        else
+            type_name='not_sour';
+        end 
         degrees = {1,5};
         scale_degree_soured = degrees{randi([1 2])};
     
-        if type{i} == 1
-            type_name='sour';
-        else
-            type_name='notsour';
-        end
+        
         
         % Generating melody and sometimes souring it
         melody = make_newmel_sour_Jacob(n, sour, scale_degree_soured, mode);
@@ -37,8 +37,15 @@ for i = 1:length(type) % Loop for sour and not-sour respectively
         
        % Writing files
         fs=44100; % sampling in Hz
-        filename=['minor_',type_name,'_scaledegree',scale_degree_soured_num,'_sample',sample_num,'_freq_',Fzero,'.wav']
-        audiowrite(filename,full_melody,fs);
+        filename=['sample',sample_num,'_type',type_name,'_scaledegree',scale_degree_soured_num,'_freq',Fzero];
+        stim_name=['trial_',sample_num,'.wav']; % Actual stimulus file name
+        FILES=[FILES, convertCharsToStrings(filename)]; % For lookup table
+       
+        audiowrite(stim_name,full_melody,fs);
         
-    end
 end
+
+T=array2table(FILES'); % Some jugaad to get the array of strings in a writable form
+writetable(T,['LookupFileOrder_minor.csv']);
+clear T FILES;
+

@@ -4,22 +4,19 @@ n = 16;  % #notes
 type={1,-1};
 
 % Original data from scales_from_marcus, a word doc passed to me by Josh
-
+FILES=[];
 mode =  double([0, .7, .5, 0, .7, .4, 0, .4, .4, 0, .8, .5, 0, .7, .5, 0, .7, .4, 0, .4, .4, 0, .8, .5, 0, .7, .5, 0, .7, .4, 0, .4, .4, 0, .8, .5]);
  
-for i = 1:length(type) % Loop for sour and not-sour respectively
-    sour = type{i};
-    
-    for sample = 1:20 % We want 20 of each type condition, per mode
-
+for sample = 121:160 % We want 20 of each type condition, per mode
+        if rem(sample,2) == 0 % Even samples are sour 
+            type_name='sour';
+        else
+            type_name='not_sour';
+        end 
         degrees = {1,5};
         scale_degree_soured = degrees{randi([1 2])};
     
-        if type{i} == 1
-            type_name='sour';
-        else
-            type_name='notsour';
-        end
+      
         
         % Generating melody and sometimes souring it
         melody =  make_newmel_sour_Jacob(n, sour, scale_degree_soured, mode);
@@ -38,8 +35,14 @@ for i = 1:length(type) % Loop for sour and not-sour respectively
         
        % Writing files
         fs=44100; % sampling in Hz
-        filename=['octatonic_',type_name,'_scaledegree',scale_degree_soured_num,'_sample',sample_num,'_freq_',Fzero,'.wav']
-        audiowrite(filename,full_melody,fs);
+        filename=['sample',sample_num,'_type',type_name,'_scaledegree',scale_degree_soured_num,'_freq',Fzero];
+        stim_name=['trial_',sample_num,'.wav']; % Actual stimulus file name
+        FILES=[FILES, convertCharsToStrings(filename)]; % For lookup table
+       
+        audiowrite(stim_name,full_melody,fs);
         
-    end
 end
+
+T=array2table(FILES'); % Some jugaad to get the array of strings in a writable form
+writetable(T,['LookupFileOrder_octatonic.csv']);
+clear T FILES;

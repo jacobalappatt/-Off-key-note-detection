@@ -8,22 +8,22 @@ MEL=[]; %Stack to store all melodies for rejection sampling
 % Tweaked it to reduce the tonic, increase minor 2nd and perf 4th. See Rotation Notes
 
 %mode = double([0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.115, 0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.115, 0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.115]);
+FILES=[];
 mode = double([0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.17, 0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.17, 0, 0.07, 0, 0.183, 0, 0.184, 0.076, 0, 0.037, 0, 0.192, 0.17]);
 
 
-for i = 1:length(type) % Loop for sour and not-sour respectively
-    sour = type{i};
     
-    for sample = 1:20 % We want 20 of each type condition, per mode
-
+for sample = 81:120 % We want 20 of each type condition, per mode
+        if rem(sample,2) == 0 % Even samples are sour 
+            type_name='sour';
+        else
+            type_name='not_sour';
+        end 
+        
         degrees = {1,5};
         scale_degree_soured = degrees{randi([1 2])}; % Malinda has data about the effect of scale degree souring. Currently doing this randomly, but if there is an actual effect we should sour  1 and 5 equally in the stimulus sample set
     
-        if type{i} == 1
-            type_name='sour';
-        else
-            type_name='notsour';
-        end
+       
         
         % Generating melody and sometimes souring it
         melody =  make_newmel_sour_Bhairavi(n, sour, scale_degree_soured, mode);
@@ -37,10 +37,17 @@ for i = 1:length(type) % Loop for sour and not-sour respectively
         scale_degree_soured_num=num2str(scale_degree_soured);
         sample_num=num2str(sample);
         Fzero=num2str(Fzero_num);
-       % Writing files
+       
+        % Writing files
         fs=44100; % sampling in Hz
-        filename=['bhairavi_',type_name,'_scaledegree',scale_degree_soured_num,'_sample',sample_num,'_freq_',Fzero,'.wav']
-        audiowrite(filename,full_melody,fs);
+        filename=['sample',sample_num,'_type',type_name,'_scaledegree',scale_degree_soured_num,'_freq',Fzero];
+        stim_name=['trial_',sample_num,'.wav']; % Actual stimulus file name
+        FILES=[FILES, convertCharsToStrings(filename)]; % For lookup table
+       
+        audiowrite(stim_name,full_melody,fs);
         
-    end
 end
+
+T=array2table(FILES'); % Some jugaad to get the array of strings in a writable form
+writetable(T,['LookupFileOrder_bhairavi.csv']);
+clear T FILES;

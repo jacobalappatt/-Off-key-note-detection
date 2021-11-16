@@ -7,26 +7,16 @@ for i = 1:20
     dir=['/Users/jacob/Desktop/audiofiles/ExperimentRun1_11152021/Set',dirname];
     mkdir(dir);
     
-    %Create directory for octatonic, and write files
     cd(dir); 
-    mkdir octatonic;
-    cd octatonic;
-    wrapper_OctMel
-    
-    cd(dir); 
-    mkdir minor;
-    cd minor;
-    wrapper_MinMel
-    
-    cd(dir); 
-    mkdir major;
-    cd major;
     wrapper_MajMel
     
-    cd(dir); 
-    mkdir bhairavi;
-    cd bhairavi;
+    
+    wrapper_MinMel
+    
+   
     wrapper_BhairaviMel
     
+   
+    wrapper_OctMel
 end
 
