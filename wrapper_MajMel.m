@@ -45,8 +45,8 @@ for sample = 1:40 % We want 20 of each type condition
        
         % RMS normalization to 0.05
         ampMax = 0.05;
-        output = audioNormalization_YW(full_melody,ampMax);
-        audiowrite(stim_name,full_melody,fs);
+        output = ampMax*full_melody/rms(full_melody);
+        audiowrite(stim_name,output,fs);
         
 end
 T=array2table(FILES'); % Some jugaad to get the array of strings in a writable form

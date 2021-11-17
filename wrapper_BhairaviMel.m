@@ -48,8 +48,8 @@ for sample = 81:120 % We want 20 of each type condition, per mode
        
         % RMS normalization to 0.05
         ampMax = 0.05;
-        output = audioNormalization_YW(full_melody,ampMax);
-        audiowrite(stim_name,full_melody,fs);
+        output = full_melody/ampMax*rms(full_melody);
+        audiowrite(stim_name,output,fs);
         
 end
 
