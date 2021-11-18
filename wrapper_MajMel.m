@@ -6,7 +6,7 @@ type={1,-1}; % sour and not sour, respectively
 % Original data from Van Essen - see make_newmel_sour_Jacob_FromMalinda.m
 FILES=[];
 mode =  double([0.155,  0.000,  0.191,  0.109,  0.000,  0.214,  0.000,  0.078,  0.00,  0.055, 0.184,  0.000,  0.155,  0.000,  0.191,  0.109,  0.000,  0.214,  0.000,  0.078,  0.00,  0.055,0.184,  0.000,  0.155,  0.000,  0.191,  0.109,  0.000,  0.214,  0.000,  0.078,  0.00,  0.055, 0.184,  0.000]);
- 
+rng('shuffle'); 
 
     
 for sample = 1:40 % We want 20 of each type condition
@@ -40,13 +40,18 @@ for sample = 1:40 % We want 20 of each type condition
        % Writing files
         fs=44100; % sampling in Hz
         filename=['sample',sample_num,'_type',type_name,'_scaledegree',scale_degree_soured_num,'_freq',Fzero];
-        stim_name=['trial_',sample_num,'.wav']; % Actual stimulus file name
+        stim_name=['trial_',sample_num,'.wav']; 
+        rms_name=['trial_',sample_num,'_rms.wav']; % Actual stimulus file name
         FILES=[FILES, convertCharsToStrings(filename)]; % For lookup table
        
         % RMS normalization to 0.05
         ampMax = 0.05;
-        output = ampMax*full_melody/rms(full_melody);
-        audiowrite(stim_name,output,fs);
+        pause(0.5);
+        audiowrite(stim_name,full_melody,fs)
+        pause(0.5);
+        output = rmsnorm(audioread(stim_name)); % Malinda's script
+        pause(0.5);
+        audiowrite(rms_name,output,fs);
         
 end
 T=array2table(FILES'); % Some jugaad to get the array of strings in a writable form
