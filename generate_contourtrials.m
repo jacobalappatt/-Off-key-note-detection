@@ -7,7 +7,7 @@ rng('shuffle');
 
 for i = 1:20
     dirname=num2str(i);
-    dir=['/Users/jacob/Desktop/audiofiles/ContourTrials3_11182021/Set',dirname];
+    dir=['/Users/jacob/Desktop/audiofiles/ContourTrials4_11192021/Set',dirname];
     mkdir(dir);
     
     cd(dir); 
@@ -18,7 +18,13 @@ for i = 1:20
         melody = randsample([1 -1], 4, 1);
         note_to_change = randsample(2:3, 1);
         sample_num=num2str(sample); 
-        condition = randsample([1,2],1)
+        
+        if rem(sample,2) == 0 % Even samples are same 
+           condition = 2;; 
+        else
+           condition =1;
+        end
+        %condition = randsample([1,2],1)
  
         if condition ==1 % ref and second are different
             melody2 = melody;
