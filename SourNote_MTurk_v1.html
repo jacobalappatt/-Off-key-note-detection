@@ -549,12 +549,12 @@ font-weight: bold;
 
 <p><input id="Q2age" name="Q2age" size="6" type="text" /></p>
 
-<p>3. Please select the country of your birth </p>
+<p>3. Please select the country of your birth </p>   
 
 <table border="0" cellpadding="0" cellspacing="4">
     <tbody>
         <tr>
-   <select id="country" name="country">
+   <select id="country_birth" name="country_birth">
    <option value="Afganistan">Afghanistan</option>
    <option value="Albania">Albania</option>
    <option value="Algeria">Algeria</option>
@@ -805,13 +805,13 @@ font-weight: bold;
 </tbody>
 </table>
 
-    <!-- -->
+
 <p>4. Please select your country of residence </p>
 
 <table border="0" cellpadding="0" cellspacing="4">
     <tbody>
         <tr>
-   <select id="country" name="country">
+   <select id="country_res" name="country_res">
    <option value="Afganistan">Afghanistan</option>
    <option value="Albania">Albania</option>
    <option value="Algeria">Algeria</option>
@@ -1615,6 +1615,7 @@ function passfail(div){
 <p>&nbsp;</p>
 <button id="T2_but" onclick="stim_play('T1_clip');clickDisable('T2_but');setTimeout(function() {EnableRadio('Responses3')}, 5000);" type="button">Play</button>
 <p> Are the two melodies the same or different? </p>
+<div> Reminder: Your task is to identify if the two melodies are the same or different (i.e., whether the pattern of note-to-note changes is the same or different). </div>
 
 <table border="0" cellpadding="0" cellspacing="4">
 	<tbody>
