@@ -22,7 +22,7 @@ for sample = 121:160 % We want 20 of each type condition, per mode
       
         
         % Generating melody and sometimes souring it
-        melody =  make_newmel_sour_Jacob(n, sour, scale_degree_soured, mode);
+        melody =  make_newmel_sour_Jacob_Major(n, sour, scale_degree_soured, mode);
         
        % Setting F0 to the melody
         frequencies =[220.00, 233.08, 246.94, 261.63, 277.18, 293.66, 311.13, 329.63];

@@ -4,7 +4,7 @@
 
 for i = 1:20
     dirname=num2str(i);
-    dir=['/Users/jacob/Desktop/audiofiles/ExperimentRun2_11182021/Set',dirname];
+    dir=['/Users/jacob/Desktop/audiofiles/ExperimentRun3_11292021/Set',dirname];
     mkdir(dir);
     
     cd(dir); 
@@ -20,3 +20,4 @@ for i = 1:20
     wrapper_OctMel
 end
 
+Add_LookupTables
