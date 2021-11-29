@@ -17,7 +17,8 @@ correct=0;
 per_cor1=0;
 for i=1:40 % Loop through Major, compare answers, add to 'correct'
     response=data1_sort(i,2);
-    answer=double(LUT_master{i,2});
+    %answer=double(LUT_master{i,2});
+    answer=LUT_master{i,2};
     if response == answer
         correct=correct + 1;
     end
