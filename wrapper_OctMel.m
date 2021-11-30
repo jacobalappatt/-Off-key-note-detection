@@ -45,11 +45,11 @@ for sample = 121:160 % We want 20 of each type condition, per mode
        
         % RMS normalization to 0.05
         ampMax = 0.05;
-        pause(0.5);
+        pause(0.1);
         audiowrite(stim_name,full_melody,fs)
-        pause(0.5);
+        pause(0.1);
         output = rmsnorm(audioread(stim_name)); % Malinda's script
-        pause(0.5);
+        pause(0.1);
         audiowrite(rms_name,output,fs);
         
 end
