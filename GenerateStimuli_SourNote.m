@@ -4,7 +4,7 @@
 
 for i = 1:20
     dirname=num2str(i);
-    dir=['/Users/jacob/Desktop/audiofiles/ExperimentRun3_11292021/Set',dirname];
+    dir=['/Users/jacob/Desktop/audiofiles/ExperimentRun4_12062021/Set',dirname];
     mkdir(dir);
     
     cd(dir); 
@@ -13,11 +13,9 @@ for i = 1:20
     
     wrapper_MinMel
     
-   
-    wrapper_BhairaviMel
-    
+   % Switching out bhairavi for Poorvi in StimSet v4
+    %wrapper_BhairaviMel 
+    wrapper_PoorviMel
    
     wrapper_OctMel
 end
-
-Add_LookupTables
