@@ -30,7 +30,7 @@ var expt = 1;
     
 
 function range1(i){return i?range1(i-1).concat(i):[]}; // Defines a function that returns an array of numbers 1:i
-    
+  
 function shuffle(o){ 
     for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
@@ -1493,7 +1493,7 @@ function passfail(div){
 
 <div> For the second question on familiarity, you should judge the familiarity of the musical style of the melody rather than the familiarity of the specific melody itself.</div>
 <div> Please rate your familiarity on a scale of 1-5, 1 being the least familiar and 5 being the most familiar. </div> 
-<div> You are encouraged to use all five values of the scale over the course of the experiment </div> 
+<div> You are encouraged to use all five options at least once over the course of the experiment </div> 
 
 <p>&nbsp;</p>
 
@@ -1505,18 +1505,26 @@ function passfail(div){
 <div class="wrapper">
 <div class="page" id="trial_1" style="display: none;"><!--THIS PAGE IS THE TESTING PAGE. Instead of changing pages from here on, we just use the same page and swap out the stim and reset the buttons after every trial.-->
 <div class="cell">
-<div class="warning">Experiment 1</div>
+<h1> Experiment 1 </h1>
+
 
 <p>&nbsp;</p>
 
-<!-- Insert counter over here for number of presentations -->
+<script type="text/javascript">
+function disp_trial(){
+    var ind_temp1 = exp_trial_ind;
+    document.getElementById('trial_count').innerHTML = ind_temp1;
+}
+</script>
 
 <p>&nbsp;</p>
+
+<div> You are on trial number <span id="trial_count"></span> of 160 </div>
 
 <div class="warning">Press 'Play' to hear the next trial.</div>
 
 <p>&nbsp;</p>
-<button id="T1_but" onclick="stim_play('T1_clip');clickDisable('T1_but');setTimeout(function() {EnableRadio('Responses')}, 6000) ;" type="button">Play</button>
+<button id="T1_but" onclick="stim_play('T1_clip');clickDisable('T1_but');setTimeout(function() {EnableRadio('Responses')}, 6000) ;disp_trial('trial_count');" type="button">Play</button>
 
 <p>Question 1: Did the melody contain a mistake? </p>
 
@@ -1524,15 +1532,24 @@ function passfail(div){
 	<tbody>
 		<tr>
 			<td valign="center"><input name="Responses" onchange="EnableRadio('Responses2')" type="radio" value="1" /></td>
-			<td><span class="answertext">Yes</span></td>
+			<td><span class="answertext">Definitely Yes</span></td>
 		</tr>
 		<tr>
 			<td valign="center"><input name="Responses" onchange="EnableRadio('Responses2')" type="radio" value="2" /></td>
-			<td><span class="answertext">No</span></td>
+			<td><span class="answertext">Maybe Yes</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input name="Responses" onchange="EnableRadio('Responses2')" type="radio" value="3" /></td>
+            <td><span class="answertext">Maybe No</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input name="Responses" onchange="EnableRadio('Responses2')" type="radio" value="4" /></td>
+            <td><span class="answertext">Definitely No</span></td>
 		</tr>
 	</tbody>
 </table>
     <p>&nbsp;</p>
+
     
     <p>Question 2: How familiar did the melody sound to you? </p>
 <div> Reminder: For the question on familiarity, you should judge the familiarity of the musical style of the melody rather than identifying the specific melody itself. </div>
@@ -1576,11 +1593,10 @@ function passfail(div){
 <div class="cell">
 <div align="center">&nbsp;</div>
 
-<div class="warning">Experiment 2</div>
+
+<h1> Experiment 2 </h1> 
 
 <p>&nbsp;</p>
-
-<!-- <div>CONTOUR TASK</div> -->
 <div> On each trial, you will listen to a pair of melodies. The second melody will always be in a higher pitch register than the first.</div>
 
 <div> Your task is to identify if the two melodies are the same or different (i.e., whether the pattern of note-to-note changes is the same or different). Half of the time the melodies will be the same, and half of the time they will be different  </div> 
@@ -1615,10 +1631,20 @@ function passfail(div){
 
 <p>&nbsp;</p>
 
+<script type="text/javascript">
+function disp_trial(){
+    var ind_temp2 = exp_trial_ind;
+    document.getElementById('trial_count').innerHTML = ind_temp2;
+}
+</script>
+
+<p>&nbsp;</p>
+<div> You are on trial number <span id="trial_count"></span> of 40 </div>
+
 <div class="warning">Press 'Play' to hear the two melodies</div>
 
 <p>&nbsp;</p>
-<button id="T2_but" onclick="stim_play('T1_clip');clickDisable('T2_but');setTimeout(function() {EnableRadio('Responses3')}, 5000);" type="button">Play</button>
+<button id="T2_but" onclick="stim_play('T1_clip');clickDisable('T2_but');setTimeout(function() {EnableRadio('Responses3')}, 5000);disp_trial('trial_count');" type="button">Play</button>
 <p> Are the two melodies the same or different? </p>
 <div> Reminder: Your task is to identify if the two melodies are the same or different (i.e., whether the pattern of note-to-note changes is the same or different). </div>
 
@@ -1649,7 +1675,7 @@ function passfail(div){
 <p>&nbsp;</p>
     
 
-<div>You will receive a bonus of $4.50 in addition to an initial task fee of $0.25!</div>
+<div>You will receive a bonus of $5.50 in addition to an initial task fee of $0.25!</div>
 
 <div>Please allow 2 business days for the bonus to be awarded.</div>
 
