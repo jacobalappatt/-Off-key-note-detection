@@ -1632,19 +1632,20 @@ function disp_trial(){
 <p>&nbsp;</p>
 
 <script type="text/javascript">
-function disp_trial(){
+function disp_trial2(){
     var ind_temp2 = exp_trial_ind;
-    document.getElementById('trial_count').innerHTML = ind_temp2;
+    document.getElementById('trial_count2').innerHTML = ind_temp2;
 }
 </script>
 
 <p>&nbsp;</p>
-<div> You are on trial number <span id="trial_count"></span> of 40 </div>
+
+<div> You are on trial number <span id="trial_count2"></span> of 40 </div>
 
 <div class="warning">Press 'Play' to hear the two melodies</div>
 
 <p>&nbsp;</p>
-<button id="T2_but" onclick="stim_play('T1_clip');clickDisable('T2_but');setTimeout(function() {EnableRadio('Responses3')}, 5000);disp_trial('trial_count');" type="button">Play</button>
+<button id="T2_but" onclick="stim_play('T1_clip');clickDisable('T2_but');setTimeout(function() {EnableRadio('Responses3')}, 5000);disp_trial2('trial_count2');" type="button">Play</button>
 <p> Are the two melodies the same or different? </p>
 <div> Reminder: Your task is to identify if the two melodies are the same or different (i.e., whether the pattern of note-to-note changes is the same or different). </div>
 
