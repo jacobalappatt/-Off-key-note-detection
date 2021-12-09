@@ -152,7 +152,7 @@ close(f3)
 
 %Plot d prime on those who pass contour trials
 f4=figure;
-D_PRIME_PASS=D_PRIME(idx,:)
+D_PRIME_PASS=D_PRIME(idx,:);
 bar(mean(D_PRIME_PASS))
 hold on;
 errorbar(mean(D_PRIME_PASS), std(D_PRIME_PASS)./sqrt(size(PER_CORR_PASS,1)), '.k')
@@ -165,14 +165,53 @@ ylabel('d prime')
 saveas(gcf,'dprime_AllModes_PassCatchTrials.jpg')
 close(f4)
 
-%Plot individual percent correct line plots 
+%Plot individual line plots for D prime pass
 f5=figure;
-plot(PER_CORR_PASS')
-set(gca, 'FontSize', 15, 'XTick', 1:5, 'XTickLabel', {'major', 'minor', 'bhairavi', 'octatonic', 'ContourTrials'});
-ylim([30 100]);
+plot(D_PRIME_PASS')
+set(gca, 'FontSize', 15, 'XTick', 1:5, 'XTickLabel', {'major', 'minor', 'bhairavi', 'octatonic'});
 xlabel('Mode')
 annotation('textbox', [0.8, 0.8, 0.3, 0.1], 'FontSize', 15, 'FitBoxToText','on', 'String', ["n = " num2str(size(PER_CORR_PASS,1))])
-title('Performance across modes - Percent correct')
-ylabel('percent correct')
-saveas(gcf,'PerCorr_Lines_PassCatchTrials.jpg')
+title('D Prime for individuals')
+ylabel('d prime')
+saveas(gcf,'Individuals_dprime_PassCatchTrials.jpg')
 close(f5)
+
+
+%Plot Familiarity PASS - mode data
+%FAMILIARITY_PASS=FAMILIARITY(idx,:);
+%f6=figure;
+%bar(mean(FAMILIARITY_PASS(:,[3,6,9,12])))
+%hold on;
+%errorbar(mean(FAMILIARITY_PASS(:,[3,6,9,12])), std(FAMILIARITY_PASS(:,[3,6,9,12]))./sqrt(size(PER_CORR_PASS,1)), '.k')
+%set(gca, 'FontSize', 15, 'XTick', 1:4, 'XTickLabel', {'major', 'minor', 'bhairavi', 'octatonic'});
+%xlabel('Mode')
+%annotation('textbox', [0.8, 0.8, 0.3, 0.1], 'FontSize', 15, 'FitBoxToText','on', 'String', ["n = " num2str(size(PER_CORR_PASS,1))])
+%title('Mean familiarity across modes')
+%ylabel('Mean familiarity')
+%saveas(gcf,'MeanFamiliarity_PassContourTrials.jpg')
+%close(f6)
+
+%Plot Familiarity PASS - mean data
+FAMILIARITY_PASS=FAMILIARITY(idx,:);
+f6=figure;
+bar(mean(FAMILIARITY_PASS(:,[1,4,7,10])))
+hold on;
+errorbar(mean(FAMILIARITY_PASS(:,[1,4,7,10])), std(FAMILIARITY_PASS(:,[1,4,7,10]))./sqrt(size(PER_CORR_PASS,1)), '.k')
+set(gca, 'FontSize', 15, 'XTick', 1:4, 'XTickLabel', {'major', 'minor', 'bhairavi', 'octatonic'});
+xlabel('Mode')
+annotation('textbox', [0.8, 0.8, 0.3, 0.1], 'FontSize', 15, 'FitBoxToText','on', 'String', ["n = " num2str(size(PER_CORR_PASS,1))])
+title('Mean familiarity across modes')
+ylabel('Mean familiarity')
+saveas(gcf,'MeanFamiliarity_PassContourTrials.jpg')
+close(f6)
+
+%Plot individual line plots for Familiarity pass
+f7=figure;
+plot(FAMILIARITY_PASS(:,[1,4,7,10])')
+set(gca, 'FontSize', 15, 'XTick', 1:5, 'XTickLabel', {'major', 'minor', 'bhairavi', 'octatonic'});
+xlabel('Mode')
+annotation('textbox', [0.8, 0.8, 0.3, 0.1], 'FontSize', 15, 'FitBoxToText','on', 'String', ["n = " num2str(size(PER_CORR_PASS,1))])
+title('Mean familiarity ratings for individuals')
+ylabel('Mean familiarity')
+saveas(gcf,'Individuals_meanfamiliarity_PassCatchTrials.jpg')
+close(f7)

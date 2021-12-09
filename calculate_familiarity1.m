@@ -1,7 +1,7 @@
-% analyze familiaraity
+% Script to analyze familiaraity
 % get all responses and condnums
 % sort by stimuli 1-160
-% average/median/mode per condition
+% mean/median/mode per condition
 % Save 12 values per participant
 
 function familiarity1 = calculate_familiarity1(RawData)
