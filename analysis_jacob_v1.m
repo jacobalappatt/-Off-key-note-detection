@@ -47,8 +47,9 @@ for i = 1:size(full_list,1)
     d_prime1=calculate_dprime(RawData, LUT_master);
     D_PRIME=[D_PRIME;d_prime1];
 
-    familiarity1 = calculate_familiarity1(RawData);
-    FAMILIARITY=[FAMILIARITY;familiarity1];
+    %familiarity1 = calculate_familiarity1(RawData);
+    familiarity2 = calculate_familiarity2(RawData, LUT_master);
+    FAMILIARITY=[FAMILIARITY;familiarity2];
     
     musornot = str2double(RawData.musician(1)); %will go in third column of all_data
     
@@ -173,7 +174,7 @@ xlabel('Mode')
 annotation('textbox', [0.8, 0.8, 0.3, 0.1], 'FontSize', 15, 'FitBoxToText','on', 'String', ["n = " num2str(size(PER_CORR_PASS,1))])
 title('D Prime for individuals')
 ylabel('d prime')
-saveas(gcf,'Individuals_dprime_PassCatchTrials.jpg')
+saveas(gcf,'individualdata_dprime.jpg')
 close(f5)
 
 

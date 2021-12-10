@@ -1,10 +1,11 @@
-% Script to analyze familiaraity
+% Script to analyze familiaraity on non-sour trials
 % get all responses and condnums
 % sort by stimuli 1-160
+% delete columns where LUT shows sour trial
 % mean/median/mode per condition
-% Save 12 values per participant
+% Save 12 values per participant over 80 trials
 
-function familiarity1 = calculate_familiarity1(RawData)
+function familiarity2 = calculate_familiarity2(RawData,LUT_master)
 
 familiarity = [];
 for i = 1:160 % Loop to assign values to data1 and change format
@@ -34,11 +35,17 @@ conditions={'major', 'minor', 'bhairavi','octatonic'};
             start=121;
             final=160;
         end
-        subj_data1 = data1_sort(start:final,2)
         
-        familiarity = [familiarity mean(subj_data1) median(subj_data1), mode(subj_data1)];
+        %append data1_sort with LUT's answer column
+        data1_sort_LUT=[data1_sort,table2array(LUT_master(:,2))];
+        
+        %grab only rows of data1_sort_LUT where the LUT column is '2' , i.e. CORRECT TRIAL
+        subj_data1 = data1_sort_LUT(start:final,:);
+        correct_trials=subj_data1(subj_data1(:,3)==2,2);
+        
+        familiarity = [familiarity mean(correct_trials) median(correct_trials), mode(correct_trials)];
         
     end
-    familiarity1 = familiarity;
+    familiarity2 = familiarity;
 end
 
