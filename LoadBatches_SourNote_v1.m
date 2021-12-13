@@ -112,13 +112,19 @@ for b =1:length(Bnames);
             
             RawData.demo = {Age;Sex};
             RawData.cond1 =[ cond_indiv1(ind_w, :)'];
+            
             RawData.resp1 = [resp_indiv1( ind_w, :)'];
             RawData.cond2 =[cond_indiv2(ind_w, :)'];
+            
             RawData.resp2 = [resp_indiv2( ind_w, :)'];
             RawData.resp_familiarity1 = [resp_familiarity1( ind_w, :)'];
-
+            
             RawData.stim1 = randStim1';
             RawData.stim2 = randStim2';
+            
+            RawData.worker = WorkerID{worker};
+           
+            
             
             fname = sprintf('%s_%d_%s%s', Batch_number, worker, 'RawData', '.mat');
             save(fname, 'RawData');
