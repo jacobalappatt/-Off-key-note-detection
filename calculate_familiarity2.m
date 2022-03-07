@@ -16,7 +16,7 @@ end
 data1_sort=sortrows(data1,'ascend'); % sort ascending to match LUT
 
 % Familiarity ratings for Expt 1
-conditions={'major', 'minor', 'bhairavi','octatonic'};
+conditions={'major', 'minor', 'poorvi','octatonic'};
     for j =1:4
         condition=convertCharsToStrings(conditions{j}); % Select which condition - determines the x dimension length
         if condition =='major'
@@ -27,7 +27,7 @@ conditions={'major', 'minor', 'bhairavi','octatonic'};
             start=41;
             final=80;
         end
-        if condition =='bhairavi'
+        if condition =='poorvi'
             start=81;
             final=120;
         end
