@@ -1,4 +1,6 @@
-% Currently does:
+% Analysis script for Bhairavi experiment. 
+
+%Currently does:
 % Calculation of percent corr for exp 1 & exp 2
 % Calculation of d' for exp1. 
 % Plots of percent correct using all data and filtered data

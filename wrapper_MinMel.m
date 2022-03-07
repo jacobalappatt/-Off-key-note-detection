@@ -2,7 +2,7 @@
 
 n = 16;  % #notes
 type={1,-1};
-% Key Profile changed so 0 probability on off scale notes
+% Key Profile changed to 0 probability on off scale notes
 % Original data from Van Essen - see make_newmel_sour_Jacob_FromMalinda.m
 FILES=[];
 mode = double([0.149, 0.179, 0, 0.144, 0, 0.201, 0.038, 0, 0.053,	0, 0.192, 0, 0.149, 0.179, 0, 0.144, 0, 0.201, 0.038, 0, 0.053,	0, 0.192, 0, 0.149, 0.179, 0, 0.144, 0, 0.201, 0.038, 0, 0.053,	0, 0.192, 0]);

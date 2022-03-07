@@ -1,5 +1,5 @@
-% Own analysis script for Expt 1
-% Returns a 4x1 double array
+% analysis script for Expt 1
+% Returns a 4x1 double array of percent correct on contour trials
 
 % Usage : performance1= calculate_performance2(RawData, LUT_master) 
 function performance2= calculate_performance2(RawData, LUT_master)

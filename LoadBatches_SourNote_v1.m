@@ -1,11 +1,10 @@
 % Script to extract familiarity ratings
-
+% Takes raw batch files from MTurk and provides subject specific data matrices
 
 clear all
 
-Bnames = {'Batch_4612166_batch_results','Batch_4613886_batch_results','Batch_4613270_batch_results','Batch_4617286_batch_results'}
 
-%WorkerID_all is a cell array of worker IDs to exclude (1 column x n rows)
+Bnames = {'Batch_4629727_batch_results', 'Batch_4632333_batch_results'} % Run 5
 
 %%
 z = 0;

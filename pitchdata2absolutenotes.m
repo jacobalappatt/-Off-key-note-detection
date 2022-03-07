@@ -1,11 +1,10 @@
-% Convert pitch map to tones
-%expects csv data of pitch track information output from
-%Tony/SonicVisualizer
+% Convert pitch map from Tony (Sonic Visualizer) to tones
+% expects csv data of pitch track information output from
+% Tony/SonicVisualizer
 
-%Removes frequencies under 65Hz to prevent Tanpura interference in Tony's
-%melody extraction
-    %csv_data = csvread('insertcsvname.csv');
-    %csv_data_filtered=csv_data; 
+% Removes frequencies under 65Hz to prevent Tanpura notes from interfering with Tony's melody extraction
+   %csv_data = csvread('insertcsvname.csv');
+   %csv_data_filtered=csv_data; 
    %csv_data_filtered=csv_data;
    %indices = find(abs(csv_data)<65);
    %csv_data_filtered(indices) = NaN;

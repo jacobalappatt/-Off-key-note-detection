@@ -3,7 +3,7 @@
 n = 16;  % #notes
 type={1,-1};
 
-% Original data from scales_from_marcus, a word doc passed to me by Josh
+% Original data from scales_from_marcus, a word doc passed to Jacob by Josh
 FILES=[];
 mode =  double([0, .7, .5, 0, .7, .4, 0, .4, .4, 0, .8, .5, 0, .7, .5, 0, .7, .4, 0, .4, .4, 0, .8, .5, 0, .7, .5, 0, .7, .4, 0, .4, .4, 0, .8, .5]);
 rng('shuffle'); 

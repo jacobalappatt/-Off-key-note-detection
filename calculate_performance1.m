@@ -1,5 +1,5 @@
 % Own analysis script for Expt 1
-% Returns a 4x1 double array
+% Returns a 4x1 double array of percent correct for sour note trials
 
 % Usage : performance1= calculate_performance1(RawData, LUT_master) 
 function performance1= calculate_performance1(RawData, LUT_master)

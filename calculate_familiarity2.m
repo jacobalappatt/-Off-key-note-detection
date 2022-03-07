@@ -1,9 +1,10 @@
 % Script to analyze familiaraity on non-sour trials
-% get all responses and condnums
+
+% gets all responses and condition numberss
 % sort by stimuli 1-160
 % delete columns where LUT shows sour trial
 % mean/median/mode per condition
-% Save 12 values per participant over 80 trials
+% Saves 12 values per participant across 80 trials
 
 function familiarity2 = calculate_familiarity2(RawData,LUT_master)
 

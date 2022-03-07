@@ -1,5 +1,6 @@
-% Own analysis script for Expt 1
-% Returns a 4x1 double array
+% Analysis script for sour note trials
+% Launched by analysis_jacob_vn.m scripts
+% Returns a 4x1 double array of d prime values per subject, per mode/condition
 
 % Usage : d_prime1= calculate_dprime(RawData, LUT_master) 
 function d_prime1= calculate_dprime(RawData, LUT_master)
